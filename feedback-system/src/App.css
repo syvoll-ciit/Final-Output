@@ -1,107 +1,20 @@
-/* General Styles */
-body {
-  font-family: Arial, sans-serif;
+/* App.css */
+
+body, html {
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+* {
   box-sizing: border-box;
-  background-color: #03212b;
 }
 
-h1, h2 {
-  color: #e2e2e2;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-p {
-  color: #e2e2e2;
-  text-align: center;
-}
-
-/* Button Styles */
 button {
-  background-color: #F04770;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
+  outline: none;
   transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #c0294f;
-}
-
-/* Home Page Styles */
-div {
-  text-align: center;
-  margin-top: 30px;
-}
-
-div > div {
-  display: inline-block;
-  margin: 20px;
-}
-
-/* Form Styles */
-form {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  margin-bottom: 10px;
-  resize: none;
-  height: 100px;
-}
-
-/* Feedback List Styles */
-.feedback-list {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-}
-
-.feedback-list div {
-  background-color: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  margin-bottom: 15px;
-}
-
-.feedback-list small {
-  display: block;
-  color: #888;
-  margin-top: 5px;
-  text-align: right;
-}
-
-/* Signup form */
-form {
-  max-width: 400px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
+  opacity: 0.9;
 }
