@@ -1,29 +1,73 @@
-import React, { useState } from 'react';
-import { auth } from '../firebaseConfig';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import React, { useState, useEffect } from 'react';
+import { auth, db } from '../firebaseConfig';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
     setError(null);
-    
+    setLoading(true);
+
+    if (!email || !password || !username) {
+      setError('Please fill in all fields');
+      setLoading(false);
+      return;
+    }
+    if (password.length < 6) {
+      setError('Password should be at least 6 characters long');
+      setLoading(false);
+      return;
+    }
+
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      alert('Account created successfully! You can now log in.');
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      await updateProfile(user, {
+        displayName: username,
+      });
+
+      await setDoc(doc(db, 'users', user.uid), {
+        email: email,
+        username: username,
+      });
+
+      setLoading(false);
+      navigate('/');
     } catch (err) {
-      setError('Failed to create account. Please try again.');
+      setError(`Failed to create account: ${err.message}`);
+      setLoading(false);
       console.error('Signup Error:', err);
     }
   };
+
+  useEffect(() => {
+    if (auth.currentUser) {
+      navigate('/');
+    }
+  }, [navigate]);
 
   return (
     <div>
       <h2>Sign Up</h2>
       <form onSubmit={handleSignup}>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
+          required
+        />
         <input
           type="email"
           value={email}
@@ -38,7 +82,7 @@ const Signup = () => {
           placeholder="Password"
           required
         />
-        <button type="submit">Sign Up</button>
+        <button type="submit" disabled={loading}>Sign Up</button>
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>

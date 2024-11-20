@@ -21,9 +21,12 @@ const FeedbackList = () => {
     <div>
       <h2>Customer Feedback</h2>
       {feedbacks.map((feedback) => (
-        <div key={feedback.id}>
+        <div key={feedback.id} style={{ marginBottom: '20px' }}>
+          <h3>{feedback.title}</h3>
           <p>{feedback.text}</p>
-          <small>{feedback.createdAt.toDate().toLocaleString()}</small>
+          <small>
+            Written by: {feedback.user} on {feedback.createdAt.toDate().toLocaleString()}
+          </small>
         </div>
       ))}
     </div>
