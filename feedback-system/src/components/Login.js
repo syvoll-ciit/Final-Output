@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 /* styles */
 import './Auth.css';
-import bg1 from '../assets/bg1.png';
 
 const Login = () => {
   const [email, setEmail] = useState('');
