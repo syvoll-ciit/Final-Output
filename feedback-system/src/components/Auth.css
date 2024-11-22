@@ -4,7 +4,8 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #009fe3;
+    background: url(../assets/bg1.png) no-repeat;
+    background-size: cover;
     font-family: 'Arial', sans-serif;
     color: #fff;
   }
