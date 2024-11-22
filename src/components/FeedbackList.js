@@ -22,8 +22,10 @@ const FeedbackList = () => {
 
   return (
     <div className="feedback-container">
-      <div className="feedback-list">
+      <div className="feedback-left">
+        <div className="header">
         <h2>CUSTOMER FEEDBACK</h2>
+        </div>
         {feedbacks.map((feedback) => (
           <div className="feedback-item" key={feedback.id}>
             <h3>{feedback.title}</h3>
@@ -33,6 +35,8 @@ const FeedbackList = () => {
             </small>
           </div>
         ))}
+      </div>
+        <div className="feedback-right">
       </div>
     </div>
   );
