@@ -6,6 +6,8 @@ import FeedbackList from './components/FeedbackList';
 import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 import Login from './components/Login';
+
+/* styles */
 import './App.css';
 
 const App = () => {
